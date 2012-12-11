@@ -6,6 +6,7 @@
 
 using namespace std;
 
+void formatRec(vector<Student_info> &students, string::size_type &maxlen);
 
 //=================================================================
 // Operation: calculates the median value of a vector
@@ -17,14 +18,14 @@ double grade ( struct Student_info &si)
 	double finalGrade;
     double median = medianCalc(si.homeworks );
 
-    finalGrade = si.final * 0.4 + si.midterm * 0.2 + median * 0.4;
+    finalGrade = si.final * 0.35 + si.midterm * 0.35 + median * 0.30;
     si.finalGrade = finalGrade;
 
     return finalGrade;
 }
 
 void printRecord(const struct Student_info csi)
-{cout << csi.name << endl;}
+	{cout << csi.name << endl;}
 
 
 //=================================================================
@@ -52,6 +53,23 @@ void main()
 	// alphabetize the records (don't forget the try catch block)
 	sort(students.begin(), students.end(), compare);
 
+	formatRec(students, maxlen);
+
+	printRecord(record);
+
+	string g;
+	cin >> g;
+}// end main
+
+
+//=================================================================
+// Operation: Format output
+// Input:     students, maxlen
+// Output:    the median value of a vector; Domain_error Exception
+//=================================================================
+void formatRec(vector<Student_info> &students, string::size_type maxlen)
+{
+
 	for(vector<Student_info>::size_type i = 0; i!=students.size(); i++)
 	{
 		// write the name, padded on the right to maxlen + 1 characters
@@ -74,9 +92,4 @@ void main()
 
            cout << endl;
 	}// end for loop
-
-	printRecord(record);
-
-	string g;
-	cin >> g;
-}// end main
+}
