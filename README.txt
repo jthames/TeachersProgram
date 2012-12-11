@@ -13,7 +13,7 @@ Must get up at 7:00 tomorrow and work at GEO semiconductor
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bbbbbbbbbbbbtttttttttttttttttbbbbbbbbbbbbbbbbbbb
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -28,8 +28,8 @@ int b = 9, c = 12;
 
 for (int i =0; i <= 10; i++ ){
 	if ( test == "XOR")
-		int a = b + c;
-	test--;
+		//int a = b + c;
+	++test;
 	printf("this is a test line\n");
 } // end for
 
