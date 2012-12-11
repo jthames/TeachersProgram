@@ -40,6 +40,7 @@ local.properties
 *.suo
 *.user
 *.sln.docstates
+Debug
 
 # Build results
 [Dd]ebug/
@@ -55,11 +56,13 @@ local.properties
 *.pgd
 *.rsp
 *.sbr
+*.sln
 *.tlb
 *.tli
 *.tlh
 *.tmp
 *.vspscc
+*.vcxproj
 .builds
 *.dotCover
 
