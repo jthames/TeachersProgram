@@ -1,4 +1,33 @@
+/*===========================================================================*\
+						T E A C H E R S P R O G R A M
+\*============================================================================/
+									main.cpp
 
+	Joshua Thames
+	12/10/2012
+	
+	Built in Visual Studio Express 2012
+		Warning level = 2
+
+	Description:
+	
+	  This program reads in from file record.txt and computes final grade 
+	  according to the formula:
+
+		finalGrade = final * 0.35 + midterm * 0.35 + median * 0.30
+
+		final = final exam grade
+		midterm = midterm exam grade
+		median = median value of all homeworks
+	
+	final    = 35%
+	midterm  = 35%
+	homework = %30
+		
+		Status: Done and working properly
+
+/*===========================================================================*\
+\*===========================================================================*/
 
 // header files
 #include "medianCalc.h"
@@ -29,6 +58,37 @@ void printRecord(const struct Student_info csi)
 
 
 //=================================================================
+// Operation: Format output
+// Input:     students, maxlen
+// Output:    the median value of a vector; Domain_error Exception
+//=================================================================
+void formatRec(vector<Student_info> &students, string::size_type &maxlen)
+{
+
+	for(vector<Student_info>::size_type i = 0; i!=students.size(); i++)
+	{
+		// write the name, padded on the right to maxlen + 1 characters
+           cout << students[i].name
+                << string(maxlen +1 - students[i].name.size(), ' ');
+
+           // compute and write the grade
+           try
+           {
+               double final_grade = grade(students[i]);
+               streamsize prec = cout.precision();
+               cout << setprecision(3) << final_grade << setprecision(prec);
+           }
+           catch (domain_error e)
+           {
+               cout << e.what();
+           }
+
+           cout << endl;
+	}// end for loop
+}
+
+
+//=================================================================
 // MAIN 
 //=================================================================
 void main()
@@ -50,46 +110,15 @@ void main()
 		students.push_back(record);
 	}
 
-	// alphabetize the records (don't forget the try catch block)
+	// alphabetize the records (don't forget the try/catch block)
 	sort(students.begin(), students.end(), compare);
 
 	formatRec(students, maxlen);
 
 	printRecord(record);
 
-	string g;
-	cin >> g;
 }// end main
 
-
-//=================================================================
-// Operation: Format output
-// Input:     students, maxlen
-// Output:    the median value of a vector; Domain_error Exception
-//=================================================================
-void formatRec(vector<Student_info> &students, string::size_type maxlen)
-{
-
-	for(vector<Student_info>::size_type i = 0; i!=students.size(); i++)
-	{
-		// write the name, padded on the right to maxlen + 1 characters
-           cout << students[i].name
-                << string(maxlen +1 - students[i].name.size(), ' ');
-
-           // compute and write the grade
-           try
-           {
-               double final_grade = grade(students[i]);
-               streamsize prec = cout.precision();
-               cout << setprecision(3) << final_grade
-                    << setprecision(prec);
-
-           }
-           catch (domain_error e)
-           {
-               cout << e.what();
-           }
-
-           cout << endl;
-	}// end for loop
-}
+/*===========================================================================*\
+						End of main.cpp
+\*===========================================================================*/
